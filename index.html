@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тапай Хомяка</title>
+    <style>
+        body {text-align: center;}
+        #hamster {cursor: pointer;}
+        #score {font-size: 24px;}
+    </style>
+</head>
+<body>
+    <h1>Тапай Хомяка!</h1>
+    <div id="score">Очки: 0</div>
+    <img id='hamster' src="hamster.webp" alt="Хомяк" width="100">
+    <script>
+        function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+  }  
+        const prize1 = [
+            {
+                id: '1',
+                photo: '<img src="money.webp">'
+            },
+            {
+                id: '2',
+                photo: '<img src="bitcoin.webp">'
+            },
+            {
+                id: '3',
+                photo: '<img src="car.webp">'
+            }
+        ]
+        let score = 0
+        document.getElementById('hamster').onclick = function() {
+            score++
+            document.getElementById('score').innerText = 'Очки: ' + score
+            spawnPrize()
+        }
+        function spawnPrize(){
+            const prize = document.createElement('div')
+            prize.innerHTML += 'prize1[Math.floor(Math.random() * (3 - 0) + 0)].photo'
+       
+ 
+            prize.style.position = 'absolute'
+            prize.style.left = Math.random()*window.innerWidth + 'px'
+            prize.style.top = Math.random()*window.innerHeight + 'px'
+            document.body.appendChild(prize)
+            setTimeout(() => prize.remove(),2000)
+
+        }
+    </script>
+</body>
+</html>
